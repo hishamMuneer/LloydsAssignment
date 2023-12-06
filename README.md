@@ -8,6 +8,6 @@
   - https://ddragon.leagueoflegends.com/cdn/13.23.1/data/en_US/champion/Aatrox.json
 - Images of the champion can be loaded via the following urls
   - Champions (Splash Art): http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg
-  - Champions (Loading Screen Art): http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg
+  - Champions (Loading Art): http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg
   - sample images in the docs folder
 

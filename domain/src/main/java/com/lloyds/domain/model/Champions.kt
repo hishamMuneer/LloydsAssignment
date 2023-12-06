@@ -8,5 +8,6 @@ data class Champion(
     val title: String,
     val blurb: String,
     val lore: String,
-    val tags: List<String>
+    val tags: List<String>,
+    val image: String
 )

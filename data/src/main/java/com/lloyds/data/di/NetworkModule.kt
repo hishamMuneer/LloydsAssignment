@@ -6,8 +6,8 @@ import com.lloyds.data.api.ChampionService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import kotlinx.serialization.json.Json
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -16,12 +16,15 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
+    private val json = Json {
+        ignoreUnknownKeys = true // Skip unknown JSON properties without raising SerializationException.
+    }
+
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
-
         return Retrofit.Builder()
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
@@ -31,5 +34,4 @@ class NetworkModule {
     fun provideChampService(retrofit: Retrofit): ChampionService {
         return retrofit.create(ChampionService::class.java)
     }
-
 }

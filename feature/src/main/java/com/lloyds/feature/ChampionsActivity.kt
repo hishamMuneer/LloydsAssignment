@@ -7,16 +7,18 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.lloyds.feature.champions.viewmodel.ChampionsViewModel
+import com.lloyds.feature.championdetail.viewmodel.ChampionDetailViewModel
+import com.lloyds.feature.champions.viewmodel.ChampionListViewModel
+import com.lloyds.feature.navigation.ChampionsNavHost
 import com.lloyds.feature.theme.LloydsAssignmentTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val championsViewModel: ChampionsViewModel by viewModels()
+    private val championListViewModel: ChampionListViewModel by viewModels()
+    private val championDetailViewModel: ChampionDetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,28 +26,14 @@ class MainActivity : ComponentActivity() {
             LloydsAssignmentTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    ChampionsNavHost(
+                        championListViewModel = championListViewModel,
+                        championDetailViewModel = championDetailViewModel
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LloydsAssignmentTheme {
-        Greeting("Android")
     }
 }

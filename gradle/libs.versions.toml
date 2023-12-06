@@ -12,8 +12,10 @@ material = "1.10.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 kotlinxConverter = "1.0.0"
-hiltAndroid = "2.44.2"
+hiltAndroid = "2.49"
 kotlinxSerializationJson = "1.5.1"
+coil = "2.4.0"
+navigation = "2.7.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +40,9 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-kapt = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
+
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 
 
 [plugins]
