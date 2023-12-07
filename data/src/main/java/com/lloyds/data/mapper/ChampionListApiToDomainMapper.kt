@@ -10,6 +10,9 @@ import javax.inject.Inject
 class ChampionListApiToDomainMapper @Inject constructor() :
     DataMapper<APIChampionMap, ChampionMap> {
 
+    companion object {
+        private const val CHAMPION_LOADING_IMAGE_FORMAT = "/cdn/img/champion/loading/%s_0.jpg"
+    }
     override fun map(data: APIChampionMap): ChampionMap {
         val championMapData = data.data.mapValues { (_, apiChampion) ->
             mapInternals(apiChampion)
@@ -27,7 +30,7 @@ class ChampionListApiToDomainMapper @Inject constructor() :
                 lore = lore ?: "",
                 tags = tags,
                 // http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg
-                image = BuildConfig.BASE_URL + "/cdn/img/champion/loading/${id}_0.jpg"
+                image = BuildConfig.BASE_URL + CHAMPION_LOADING_IMAGE_FORMAT.format(id)
             )
         }
     }

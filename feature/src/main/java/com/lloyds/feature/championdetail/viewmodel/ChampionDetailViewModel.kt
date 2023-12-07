@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChampionDetailViewModel @Inject constructor(
-    private val useCase: ChampionUseCase
+    private val championUseCase: ChampionUseCase
 ) : ViewModel() {
 
     // backing property
@@ -23,9 +23,9 @@ class ChampionDetailViewModel @Inject constructor(
     val championStateFlow: StateFlow<ViewState<Champion>>
         get() = _championStateFlow
 
-    fun getChampion(champName: String) {
+    fun getChampion(id: String) {
         viewModelScope.launch {
-            useCase(champName).collect {
+            championUseCase(id).collect {
                 when (it) {
                     is Result.Error -> {
                         _championStateFlow.value =

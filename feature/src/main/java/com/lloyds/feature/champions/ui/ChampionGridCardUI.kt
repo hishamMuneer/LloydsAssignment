@@ -26,7 +26,7 @@ fun ChampionGridCardUI(champion: Champion, selectedItem: (String) -> Unit) {
     // Box with content alignment and background color
     Box(modifier = Modifier
         .fillMaxWidth()
-        .clickable { selectedItem(champion.name) } // click event
+        .clickable { selectedItem(champion.id) } // click event
         .clip(MaterialTheme.shapes.medium)
         .background(MaterialTheme.colorScheme.surface)
         .padding(2.dp)

@@ -22,7 +22,7 @@ fun ChampionListScreen(
             val list = result.data
             LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                 items(list.size) {
-                    ChampionGridCardUI(list[it].second, selectedItem)
+                    ChampionGridCardUI(list[it], selectedItem)
                 }
             }
         }

@@ -12,6 +12,6 @@ interface ChampionService {
     suspend fun getChampionList(): Response<APIChampionMap>
 
     // Sample URL: https://ddragon.leagueoflegends.com/cdn/13.23.1/data/en_US/champion/Aatrox.json
-    @GET("/cdn/13.23.1/data/en_US/champion/{champ}.json")
-    suspend fun getChampion(@Path("champ") champion: String): Response<APIChampionDetails>
+    @GET("/cdn/13.23.1/data/en_US/champion/{id}.json")
+    suspend fun getChampion(@Path("id") id: String): Response<APIChampionDetails>
 }

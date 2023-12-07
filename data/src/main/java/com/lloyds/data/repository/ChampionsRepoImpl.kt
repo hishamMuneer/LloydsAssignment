@@ -14,6 +14,6 @@ class ChampionsRepoImpl @Inject constructor(private val champDataSource: ChampDa
         champDataSource.getChampionMap()
 
 
-    override suspend fun getChampion(champName: String): Flow<Result<Champion>> =
-        champDataSource.getChampion(champName)
+    override suspend fun getChampion(id: String): Flow<Result<Champion>> =
+        champDataSource.getChampion(id)
 }

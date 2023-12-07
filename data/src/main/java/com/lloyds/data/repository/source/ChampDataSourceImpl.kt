@@ -34,10 +34,10 @@ class ChampDataSourceImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun getChampion(champion: String): Flow<Result<Champion>> {
+    override suspend fun getChampion(id: String): Flow<Result<Champion>> {
         return flow {
             try {
-                val response = service.getChampion(champion)
+                val response = service.getChampion(id)
                 if (response.isSuccessful) {
                     response.body()?.let {
                         emit(Result.Success(championDetailApiMapper.map(it)))

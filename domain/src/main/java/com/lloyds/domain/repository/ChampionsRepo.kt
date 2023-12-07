@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface ChampionsRepo {
 
     suspend fun getChampionMap(): Flow<Result<ChampionMap>>
-    suspend fun getChampion(champName: String): Flow<Result<Champion>>
+    suspend fun getChampion(id: String): Flow<Result<Champion>>
 
 }

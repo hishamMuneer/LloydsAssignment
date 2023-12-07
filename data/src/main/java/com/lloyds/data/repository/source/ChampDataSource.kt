@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface ChampDataSource {
     suspend fun getChampionMap(): Flow<Result<ChampionMap>>
 
-    suspend fun getChampion(champion: String): Flow<Result<Champion>>
+    suspend fun getChampion(id: String): Flow<Result<Champion>>
 }

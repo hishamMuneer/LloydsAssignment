@@ -9,10 +9,10 @@ import com.lloyds.feature.shared.ui.ErrorView
 import com.lloyds.feature.shared.ui.LoadingView
 
 @Composable
-fun ChampionDetailScreen(viewModel: ChampionDetailViewModel, champName: String) {
+fun ChampionDetailScreen(viewModel: ChampionDetailViewModel, id: String) {
 
     LaunchedEffect(key1 = true) {
-        viewModel.getChampion(champName)
+        viewModel.getChampion(id)
     }
     when (val champion = viewModel.championStateFlow.collectAsState().value) {
         is ViewState.Success -> {

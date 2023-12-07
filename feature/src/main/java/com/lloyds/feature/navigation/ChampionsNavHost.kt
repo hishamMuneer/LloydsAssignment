@@ -25,12 +25,12 @@ fun ChampionsNavHost(
             }
         }
         composable(
-            route = "champion_detail/{champName}", arguments = listOf(navArgument("champName") {
+            route = "champion_detail/{id}", arguments = listOf(navArgument("id") {
                 type = NavType.StringType
             })
         ) {
-            it.arguments?.getString("champName")?.let { champ ->
-                ChampionDetailScreen(viewModel = championDetailViewModel, champName = champ)
+            it.arguments?.getString("id")?.let { champ ->
+                ChampionDetailScreen(viewModel = championDetailViewModel, id = champ)
             }
         }
     }
