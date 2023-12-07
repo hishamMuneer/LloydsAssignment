@@ -24,7 +24,7 @@ open class BaseUnitTest {
             blurb = "Blurb here",
             lore = "Lore here",
             tags = listOf("Fighter", "Tank"),
-            image = "https://example.com/cdn/img/champion/loading/Aatrox_0.jpg"
+            image = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg"
         )
     }
 }
