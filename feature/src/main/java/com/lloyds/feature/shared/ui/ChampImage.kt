@@ -19,8 +19,11 @@ fun ChampImage(
 
     // Coil library painter to load the image from URL
     val painter = rememberAsyncImagePainter(
-        ImageRequest.Builder(LocalContext.current).data(data = image)
-            .placeholder(R.drawable.placeholder_img).build()
+        ImageRequest.Builder(LocalContext.current)
+            .data(data = image)
+            .placeholder(R.drawable.placeholder_img)
+            .error(R.drawable.placeholder_img)
+            .build()
     )
 
     // Image with content scale and painter

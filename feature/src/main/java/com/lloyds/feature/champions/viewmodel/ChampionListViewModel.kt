@@ -31,6 +31,7 @@ class ChampionListViewModel @Inject constructor(
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun getChampions() {
         viewModelScope.launch {
+            _championStateFlow.value = ViewState.Loading
             championsUseCase().collect {
                 when (it) {
                     is Result.Error -> {

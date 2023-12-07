@@ -25,6 +25,7 @@ class ChampionDetailViewModel @Inject constructor(
 
     fun getChampion(id: String) {
         viewModelScope.launch {
+            _championStateFlow.value = ViewState.Loading
             championUseCase(id).collect {
                 when (it) {
                     is Result.Error -> {
