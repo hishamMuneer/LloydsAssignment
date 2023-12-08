@@ -1,6 +1,7 @@
 package com.lloyds.data.repository
 
-import com.lloyds.data.repository.source.ChampDataSource
+import com.lloyds.data.repository.source.ChampionDetailsDataSource
+import com.lloyds.data.repository.source.ChampionMapDataSource
 import com.lloyds.domain.model.Champion
 import com.lloyds.domain.model.ChampionMap
 import com.lloyds.domain.repository.ChampionsRepo
@@ -8,12 +9,15 @@ import com.lloyds.domain.shared.Result
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ChampionsRepoImpl @Inject constructor(private val champDataSource: ChampDataSource) :
+class ChampionsRepoImpl @Inject constructor(
+    private val championMapDataSource: ChampionMapDataSource,
+    private val championDetailsDataSource: ChampionDetailsDataSource
+) :
     ChampionsRepo {
     override suspend fun getChampionMap(): Flow<Result<ChampionMap>> =
-        champDataSource.getChampionMap()
+        championMapDataSource.getChampionMap()
 
 
     override suspend fun getChampion(id: String): Flow<Result<Champion>> =
-        champDataSource.getChampion(id)
+        championDetailsDataSource.getChampion(id)
 }

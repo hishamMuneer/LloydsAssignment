@@ -1,6 +1,7 @@
 package com.lloyds.data.repository
 
-import com.lloyds.data.repository.source.ChampDataSource
+import com.lloyds.data.repository.source.ChampionDetailsDataSource
+import com.lloyds.data.repository.source.ChampionMapDataSource
 import com.lloyds.domain.model.Champion
 import com.lloyds.domain.model.ChampionMap
 import com.lloyds.domain.repository.ChampionsRepo
@@ -17,26 +18,28 @@ import org.junit.Test
 
 class ChampionsRepoImplTest {
 
-    private lateinit var champDataSource: ChampDataSource
+    private lateinit var championMapDataSource: ChampionMapDataSource
+    private lateinit var championDetailsDataSource: ChampionDetailsDataSource
     private lateinit var championsRepo: ChampionsRepo
 
     @Before
     fun setup() {
-        champDataSource = mockk()
-        championsRepo = ChampionsRepoImpl(champDataSource)
+        championMapDataSource = mockk()
+        championDetailsDataSource = mockk()
+        championsRepo = ChampionsRepoImpl(championMapDataSource, championDetailsDataSource)
     }
 
     @Test
     fun getChampionMap_SuccessfulResponse_ReturnsSuccessResult() = runTest {
         // Given
         val expectedResult = Result.Success(createChampionMap())
-        coEvery { champDataSource.getChampionMap() } returns flowOf(expectedResult)
+        coEvery { championMapDataSource.getChampionMap() } returns flowOf(expectedResult)
 
         // When
         val result = championsRepo.getChampionMap().toList()
 
         // Then
-        coVerify { champDataSource.getChampionMap() }
+        coVerify { championMapDataSource.getChampionMap() }
         assertEquals(1, result.size)
         assertEquals(expectedResult, result.first())
     }
@@ -45,13 +48,13 @@ class ChampionsRepoImplTest {
     fun getChampionMap_FailedResponse_ReturnsErrorResult() = runTest {
         // Given
         val expectedResult = Result.Error(IllegalArgumentException("response failed"))
-        coEvery { champDataSource.getChampionMap() } returns flowOf(expectedResult)
+        coEvery { championMapDataSource.getChampionMap() } returns flowOf(expectedResult)
 
         // When
         val result = championsRepo.getChampionMap().toList()
 
         // Then
-        coVerify { champDataSource.getChampionMap() }
+        coVerify { championMapDataSource.getChampionMap() }
         assertEquals(1, result.size)
         assertEquals(expectedResult, result.first())
     }
@@ -60,13 +63,13 @@ class ChampionsRepoImplTest {
     fun getChampion_SuccessfulResponse_ReturnsSuccessResult() = runTest {
         // Given
         val expectedResult = Result.Success(createChampion())
-        coEvery { champDataSource.getChampion(any()) } returns flowOf(expectedResult)
+        coEvery { championDetailsDataSource.getChampion(any()) } returns flowOf(expectedResult)
 
         // When
         val result = championsRepo.getChampion("Aatrox").toList()
 
         // Then
-        coVerify { champDataSource.getChampion("Aatrox") }
+        coVerify { championDetailsDataSource.getChampion("Aatrox") }
         assertEquals(1, result.size)
         assertEquals(expectedResult, result.first())
     }
@@ -75,13 +78,13 @@ class ChampionsRepoImplTest {
     fun getChampion_FailedResponse_ReturnsErrorResult() = runTest {
         // Given
         val expectedResult = Result.Error(IllegalArgumentException("response failed"))
-        coEvery { champDataSource.getChampion(any()) } returns flowOf(expectedResult)
+        coEvery { championDetailsDataSource.getChampion(any()) } returns flowOf(expectedResult)
 
         // When
         val result = championsRepo.getChampion("Aatrox").toList()
 
         // Then
-        coVerify { champDataSource.getChampion("Aatrox") }
+        coVerify { championDetailsDataSource.getChampion("Aatrox") }
         assertEquals(1, result.size)
         assertEquals(expectedResult, result.first())
     }
