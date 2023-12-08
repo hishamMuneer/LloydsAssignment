@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import com.lloyds.feature.championdetail.viewmodel.ChampionDetailViewModel
-import com.lloyds.feature.state.ViewState
 import com.lloyds.feature.shared.ui.ErrorView
 import com.lloyds.feature.shared.ui.LoadingView
+import com.lloyds.feature.state.ViewState
 
 @Composable
 fun ChampionDetailScreen(viewModel: ChampionDetailViewModel, id: String) {

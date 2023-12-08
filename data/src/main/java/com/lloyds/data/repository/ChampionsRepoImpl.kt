@@ -6,8 +6,8 @@ import com.lloyds.domain.model.Champion
 import com.lloyds.domain.model.ChampionMap
 import com.lloyds.domain.repository.ChampionsRepo
 import com.lloyds.domain.shared.Result
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class ChampionsRepoImpl @Inject constructor(
     private val championMapDataSource: ChampionMapDataSource,

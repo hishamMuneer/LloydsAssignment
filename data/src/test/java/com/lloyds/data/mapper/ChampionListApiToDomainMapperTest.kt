@@ -2,8 +2,9 @@ package com.lloyds.data.mapper
 
 import com.lloyds.data.BaseUnitTest
 import com.lloyds.data.model.APIChampionMap
-import org.junit.Assert.*
-
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 

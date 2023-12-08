@@ -4,11 +4,11 @@ import com.lloyds.data.api.ChampionService
 import com.lloyds.data.mapper.ChampionListApiToDomainMapper
 import com.lloyds.domain.model.ChampionMap
 import com.lloyds.domain.shared.Result
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import javax.inject.Inject
 
 class ChampionMapDataSourceImpl @Inject constructor(
     private val service: ChampionService,

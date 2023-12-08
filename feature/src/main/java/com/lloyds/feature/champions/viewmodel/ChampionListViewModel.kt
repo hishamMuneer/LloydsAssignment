@@ -8,10 +8,10 @@ import com.lloyds.domain.shared.Result
 import com.lloyds.domain.usecase.ChampionMapUseCase
 import com.lloyds.feature.state.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class ChampionListViewModel @Inject constructor(
