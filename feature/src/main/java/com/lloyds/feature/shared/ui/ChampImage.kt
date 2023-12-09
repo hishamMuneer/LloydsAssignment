@@ -21,6 +21,7 @@ fun ChampImage(
     val painter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .data(data = image)
+            .crossfade(500)
             .placeholder(R.drawable.placeholder_img)
             .error(R.drawable.placeholder_img)
             .build()
