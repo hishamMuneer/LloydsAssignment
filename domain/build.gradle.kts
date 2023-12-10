@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace = "com.lloyds.domain"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -30,15 +30,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
 
     // Hilt
     implementation(libs.hilt)

@@ -8,11 +8,10 @@ plugins {
 
 android {
     namespace = "com.lloyds.data"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
-    buildFeatures.buildConfig = true
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,7 +34,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
