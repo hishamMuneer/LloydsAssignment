@@ -12,8 +12,7 @@ import kotlinx.coroutines.flow.Flow
 class ChampionsRepoImpl @Inject constructor(
     private val championMapDataSource: ChampionMapDataSource,
     private val championDetailsDataSource: ChampionDetailsDataSource
-) :
-    ChampionsRepo {
+) : ChampionsRepo {
     override suspend fun getChampionMap(): Flow<Result<ChampionMap>> =
         championMapDataSource.getChampionMap()
 

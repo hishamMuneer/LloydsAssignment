@@ -1,6 +1,6 @@
 package com.lloyds.domain.model
 
-data class ChampionMap(val data: Map<String, Champion>)
+data class ChampionMap(val champMap: Map<String, Champion>)
 
 data class Champion(
     val id: String,

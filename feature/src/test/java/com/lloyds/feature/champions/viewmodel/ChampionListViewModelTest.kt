@@ -70,17 +70,7 @@ class ChampionListViewModelTest : BaseUnitTest() {
         // Then
         val state = viewModel.championStateFlow.value
         assert(state is ViewState.Success)
-        assertEquals(expectedResult.data.data.values.toList(), (state as ViewState.Success).data)
+        assertEquals(expectedResult.data.champMap.values.toList(), (state as ViewState.Success).data)
         assert(state.data.size == 2)
     }
-
-
-//    @Test
-//    fun `api is called exactly once`() = runTest {
-//        // When
-//        viewModel.getChampions()
-//
-//        // Then
-//        coVerify(exactly = 1) { championMapUseCase() }
-//    }
 }

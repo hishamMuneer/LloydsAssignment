@@ -42,7 +42,7 @@ open class BaseUnitTest {
     }
 
     internal fun createChampionMap(): ChampionMap {
-        return ChampionMap(data = mapOf("Aatrox" to createChampion()))
+        return ChampionMap(champMap = mapOf("Aatrox" to createChampion()))
     }
 
     internal fun createChampion(): Champion {

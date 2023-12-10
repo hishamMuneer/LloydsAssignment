@@ -26,10 +26,10 @@ class ChampionListApiToDomainMapperTest: BaseUnitTest() {
         val championMap = mapper.map(apiChampionMap)
 
         // Then
-        assertEquals(1, championMap.data.size)
-        assertTrue(championMap.data.containsKey("Aatrox"))
+        assertEquals(1, championMap.champMap.size)
+        assertTrue(championMap.champMap.containsKey("Aatrox"))
 
-        val champion = championMap.data["Aatrox"]
+        val champion = championMap.champMap["Aatrox"]
         assertNotNull(champion)
         assertEquals("Aatrox", champion?.name)
         assertEquals("The Darkin Blade", champion?.title)
@@ -49,7 +49,7 @@ class ChampionListApiToDomainMapperTest: BaseUnitTest() {
         val championMap = mapper.map(apiChampionMap)
 
         // Then
-        assertEquals(0, championMap.data.size)
+        assertEquals(0, championMap.champMap.size)
     }
 
     @Test(timeout = 100)
@@ -78,11 +78,11 @@ class ChampionListApiToDomainMapperTest: BaseUnitTest() {
         val championMap = mapper.map(apiChampionMap)
 
         // Then
-        assertEquals(2, championMap.data.size)
-        assertTrue(championMap.data.containsKey("Aatrox"))
-        assertTrue(championMap.data.containsKey("Ahri"))
+        assertEquals(2, championMap.champMap.size)
+        assertTrue(championMap.champMap.containsKey("Aatrox"))
+        assertTrue(championMap.champMap.containsKey("Ahri"))
 
-        val ahriChampion = championMap.data["Ahri"]
+        val ahriChampion = championMap.champMap["Ahri"]
         assertNotNull(ahriChampion)
         assertEquals("Ahri", ahriChampion?.name)
         assertEquals("The Nine-Tailed Fox", ahriChampion?.title)
@@ -97,7 +97,7 @@ class ChampionListApiToDomainMapperTest: BaseUnitTest() {
         val championMap = mapper.map(apiChampionMap)
 
         // Then
-        val aatroxChampion = championMap.data["Aatrox"]
+        val aatroxChampion = championMap.champMap["Aatrox"]
         assertNotNull(aatroxChampion)
         assertEquals(
             "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg",
