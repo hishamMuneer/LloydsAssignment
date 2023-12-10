@@ -13,12 +13,12 @@ open class BaseUnitTest {
     }
 
     internal fun createChampionMap(): ChampionMap {
-        return ChampionMap(data = mapOf("Aatrox" to createChampion()))
+        return ChampionMap(champMap = mapOf("Aatrox" to createChampion()))
     }
 
     internal fun createMultipleChampionMap(): ChampionMap {
         return ChampionMap(
-            data = mapOf(
+            champMap = mapOf(
                 "Aatrox" to createChampion(),
                 "AurelionSol" to createChampion(
                     id = "AurelionSol",

@@ -10,7 +10,7 @@ import com.lloyds.feature.state.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -21,8 +21,7 @@ class ChampionListViewModel @Inject constructor(
     // backing property
     private val _championStateFlow: MutableStateFlow<ViewState<List<Champion>>> =
         MutableStateFlow(ViewState.Loading)
-    val championStateFlow: StateFlow<ViewState<List<Champion>>>
-        get() = _championStateFlow
+    val championStateFlow = _championStateFlow.asStateFlow()
 
     init {
         getChampions()
@@ -40,7 +39,7 @@ class ChampionListViewModel @Inject constructor(
                     }
 
                     is Result.Success -> {
-                        val champList = it.data.data.values.toList()
+                        val champList = it.data.champMap.values.toList()
                         _championStateFlow.value = ViewState.Success(champList)
                     }
                 }

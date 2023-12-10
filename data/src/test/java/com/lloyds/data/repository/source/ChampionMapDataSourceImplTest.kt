@@ -3,6 +3,7 @@ package com.lloyds.data.repository.source
 import com.lloyds.data.BaseUnitTest
 import com.lloyds.data.api.ChampionService
 import com.lloyds.data.mapper.ChampionListApiToDomainMapper
+import com.lloyds.data.repository.ApiResponseHandler
 import com.lloyds.domain.shared.Result
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -17,13 +18,15 @@ class ChampionMapDataSourceImplTest: BaseUnitTest() {
 
     private lateinit var service: ChampionService
     private lateinit var championListApiMapper: ChampionListApiToDomainMapper
+    private lateinit var apiResponseHandler: ApiResponseHandler
     private lateinit var dataSource: ChampionMapDataSource
 
     @Before
     fun setUp() {
         service = mockk()
         championListApiMapper = mockk()
-        dataSource = ChampionMapDataSourceImpl(service, championListApiMapper)
+        apiResponseHandler = ApiResponseHandler()
+        dataSource = ChampionMapDataSourceImpl(service, championListApiMapper, apiResponseHandler)
     }
 
     @Test

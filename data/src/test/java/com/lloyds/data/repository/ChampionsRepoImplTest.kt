@@ -90,7 +90,7 @@ class ChampionsRepoImplTest {
     }
 
     private fun createChampionMap(): ChampionMap {
-        return ChampionMap(data = mapOf("Aatrox" to createChampion()))
+        return ChampionMap(champMap = mapOf("Aatrox" to createChampion()))
     }
 
     private fun createChampion(): Champion {
