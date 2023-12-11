@@ -1,10 +1,16 @@
 package com.lloyds.data.mapper
 
+import com.lloyds.data.AATROX
+import com.lloyds.data.AATROX_LORE
+import com.lloyds.data.AATROX_SPLASH_IMAGE
+import com.lloyds.data.AATROX_TITLE
 import com.lloyds.data.BaseUnitTest
-import com.lloyds.data.BuildConfig
+import com.lloyds.data.TAG_FIGHTER
+import com.lloyds.data.TAG_TANK
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+
 // import java.lang.Thread.sleep
 
 class ChampionDetailApiToDomainMapperTest : BaseUnitTest() {
@@ -22,13 +28,13 @@ class ChampionDetailApiToDomainMapperTest : BaseUnitTest() {
         val champion = mapper.map(createApiChampionDetails())
 
         // Then
-        assertEquals("Aatrox", champion.id)
-        assertEquals("Aatrox", champion.name)
-        assertEquals("The Darkin Blade", champion.title)
-        assertEquals("Lore here", champion.lore)
-        assertEquals("Fighter", champion.tags[0])
-        assertEquals("Tank", champion.tags[1])
-        assertEquals(BuildConfig.BASE_URL + "/cdn/img/champion/splash/Aatrox_0.jpg", champion.image)
+        assertEquals(AATROX, champion.id)
+        assertEquals(AATROX, champion.name)
+        assertEquals(AATROX_TITLE, champion.title)
+        assertEquals(AATROX_LORE, champion.lore)
+        assertEquals(TAG_FIGHTER, champion.tags[0])
+        assertEquals(TAG_TANK, champion.tags[1])
+        assertEquals(AATROX_SPLASH_IMAGE, champion.image)
     }
 
     @Test(expected = NoSuchElementException::class)

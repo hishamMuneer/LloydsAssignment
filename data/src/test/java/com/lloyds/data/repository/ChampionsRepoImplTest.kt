@@ -1,9 +1,9 @@
 package com.lloyds.data.repository
 
+import com.lloyds.data.createChampion
+import com.lloyds.data.createChampionMap
 import com.lloyds.data.repository.source.ChampionDetailsDataSource
 import com.lloyds.data.repository.source.ChampionMapDataSource
-import com.lloyds.domain.model.Champion
-import com.lloyds.domain.model.ChampionMap
 import com.lloyds.domain.repository.ChampionsRepo
 import com.lloyds.domain.shared.Result
 import io.mockk.coEvery
@@ -87,21 +87,5 @@ class ChampionsRepoImplTest {
         coVerify { championDetailsDataSource.getChampion("Aatrox") }
         assertEquals(1, result.size)
         assertEquals(expectedResult, result.first())
-    }
-
-    private fun createChampionMap(): ChampionMap {
-        return ChampionMap(champMap = mapOf("Aatrox" to createChampion()))
-    }
-
-    private fun createChampion(): Champion {
-        return Champion(
-            id = "Aatrox",
-            name = "Aatrox",
-            title = "The Darkin Blade",
-            blurb = "Blurb here",
-            lore = "Lore here",
-            tags = listOf("Fighter", "Tank"),
-            image = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg"
-        )
     }
 }

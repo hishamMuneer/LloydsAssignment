@@ -2,8 +2,10 @@ package com.lloyds.feature.championdetail.viewmodel
 
 import com.lloyds.domain.shared.Result
 import com.lloyds.domain.usecase.ChampionUseCase
-import com.lloyds.feature.BaseUnitTest
+import com.lloyds.feature.AATROX
+import com.lloyds.feature.createChampion
 import com.lloyds.feature.state.ViewState
+import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +22,7 @@ import org.junit.Before
 import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class ChampionDetailViewModelTest : BaseUnitTest() {
+class ChampionDetailViewModelTest() {
 
     private val championUseCase: ChampionUseCase = mockk()
     private lateinit var testDispatcher: TestDispatcher
@@ -32,17 +34,17 @@ class ChampionDetailViewModelTest : BaseUnitTest() {
     }
 
     @After
-    override fun tearDown() {
-        super.tearDown()
+    fun tearDown() {
         // Isolation between Tests & Avoid Leaking State
         Dispatchers.resetMain()
+        clearAllMocks()
     }
 
     @Test
     fun `test get champion detail success`() = runTest {
         // Given
         val expectedResult = Result.Success(createChampion())
-        val id = "Aatrox"
+        val id = AATROX
         coEvery { championUseCase(id) } returns flowOf(expectedResult)
 
         // When
@@ -53,7 +55,7 @@ class ChampionDetailViewModelTest : BaseUnitTest() {
         val state = viewModel.championStateFlow.value
         assert(state is ViewState.Success)
         assertEquals(id, (state as ViewState.Success).data.id)
-        assert(state.data.name == "Aatrox")
+        assert(state.data.name == AATROX)
     }
 
 
@@ -62,7 +64,7 @@ class ChampionDetailViewModelTest : BaseUnitTest() {
 
         // Given
         val expectedResult = Result.Error(IllegalStateException("Error"))
-        val id = "Aatrox"
+        val id = AATROX
         coEvery { championUseCase(id) } returns flowOf(expectedResult)
 
         // When

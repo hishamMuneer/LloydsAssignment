@@ -2,8 +2,9 @@ package com.lloyds.feature.champions.viewmodel
 
 import com.lloyds.domain.shared.Result
 import com.lloyds.domain.usecase.ChampionMapUseCase
-import com.lloyds.feature.BaseUnitTest
+import com.lloyds.feature.createMultipleChampionMap
 import com.lloyds.feature.state.ViewState
+import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,7 @@ import org.junit.Before
 import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class ChampionListViewModelTest : BaseUnitTest() {
+class ChampionListViewModelTest {
 
     private val championMapUseCase: ChampionMapUseCase = mockk()
     private lateinit var testDispatcher: TestDispatcher
@@ -32,10 +33,10 @@ class ChampionListViewModelTest : BaseUnitTest() {
     }
 
     @After
-    override fun tearDown() {
-        super.tearDown()
+    fun tearDown() {
         // Isolation between Tests & Avoid Leaking State
         Dispatchers.resetMain()
+        clearAllMocks()
     }
 
 
