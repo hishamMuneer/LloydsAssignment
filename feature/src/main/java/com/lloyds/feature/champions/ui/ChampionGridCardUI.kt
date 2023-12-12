@@ -13,11 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.lloyds.domain.model.Champion
 import com.lloyds.feature.shared.ui.AppText
 import com.lloyds.feature.shared.ui.ChampImage
+import com.lloyds.feature.theme.ChampTextWhite
 import com.lloyds.feature.theme.GrayOverlay
 
 @Composable
@@ -51,13 +51,13 @@ fun ChampionGridCardUI(champion: Champion, selectedItem: (String) -> Unit) {
             // Title text
             AppText(
                 text = champion.name,
-                style = MaterialTheme.typography.headlineSmall.copy(Color.White),
+                style = MaterialTheme.typography.headlineSmall.copy(color = ChampTextWhite),
             )
 
             // Description text
             AppText(
                 text = champion.title,
-                style = MaterialTheme.typography.bodySmall.copy(color = Color.White),
+                style = MaterialTheme.typography.bodySmall.copy(color = ChampTextWhite),
             )
         }
     }

@@ -52,6 +52,7 @@ dependencies {
 
     // OkHttp
     implementation(libs.okhttp)
+    implementation(libs.okhttp3.logging.interceptor)
 
     // Retrofit
     implementation(libs.retrofit)

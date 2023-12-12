@@ -7,20 +7,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.lloyds.feature.championdetail.ui.ChampionDetailScreen
-import com.lloyds.feature.championdetail.viewmodel.ChampionDetailViewModel
 import com.lloyds.feature.champions.ui.ChampionListScreen
-import com.lloyds.feature.champions.viewmodel.ChampionListViewModel
 
 @Composable
-fun ChampionsNavHost(
-    championListViewModel: ChampionListViewModel,
-    championDetailViewModel: ChampionDetailViewModel
-) {
+fun ChampionsNavHost() {
 
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "champions_list") {
         composable(route = "champions_list") {
-            ChampionListScreen(viewModel = championListViewModel) {
+            ChampionListScreen() {
                 navController.navigate("champion_detail/$it")
             }
         }
@@ -30,7 +25,9 @@ fun ChampionsNavHost(
             })
         ) {
             it.arguments?.getString("id")?.let { champ ->
-                ChampionDetailScreen(viewModel = championDetailViewModel, id = champ)
+                ChampionDetailScreen(id = champ) {
+                    navController.navigateUp()
+                }
             }
         }
     }
