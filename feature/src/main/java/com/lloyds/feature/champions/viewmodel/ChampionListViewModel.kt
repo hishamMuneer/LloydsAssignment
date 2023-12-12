@@ -35,7 +35,7 @@ class ChampionListViewModel @Inject constructor(
                 when (it) {
                     is Result.Error -> {
                         _championStateFlow.value =
-                            ViewState.Error(it.exception.message ?: "error loading")
+                            ViewState.Error(it.throwable.message ?: "error loading")
                     }
 
                     is Result.Success -> {
