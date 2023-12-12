@@ -1,7 +1,9 @@
 package com.lloyds.data.repository.source
 
+import com.lloyds.data.AATROX
 import com.lloyds.data.BaseUnitTest
 import com.lloyds.data.api.ChampionService
+import com.lloyds.data.createChampion
 import com.lloyds.data.mapper.ChampionDetailApiToDomainMapper
 import com.lloyds.data.repository.ApiResponseHandler
 import com.lloyds.domain.shared.Result
@@ -14,7 +16,7 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
-class ChampionDetailsDataSourceImplTest: BaseUnitTest() {
+class ChampionDetailsDataSourceImplTest : BaseUnitTest() {
 
     private lateinit var service: ChampionService
     private lateinit var championDetailApiMapper: ChampionDetailApiToDomainMapper
@@ -26,17 +28,18 @@ class ChampionDetailsDataSourceImplTest: BaseUnitTest() {
         service = mockk()
         championDetailApiMapper = mockk()
         apiResponseHandler = mockk()
-        dataSource = ChampionDetailsDataSourceImpl(service, championDetailApiMapper, apiResponseHandler)
+        dataSource =
+            ChampionDetailsDataSourceImpl(service, championDetailApiMapper, apiResponseHandler)
     }
 
     @Test
     fun getChampion_SuccessfulResponse_ReturnsSuccessResult() = runTest {
         // Given
-        coEvery { service.getChampion("Aatrox") } returns Response.success(createApiChampionDetails())
+        coEvery { service.getChampion(AATROX) } returns Response.success(createApiChampionDetails())
         coEvery { championDetailApiMapper.map(any()) } returns createChampion()
 
         // When
-        val result = dataSource.getChampion("Aatrox").first()
+        val result = dataSource.getChampion(AATROX).first()
 
         // Then
         assert(result is Result.Success)
@@ -45,10 +48,10 @@ class ChampionDetailsDataSourceImplTest: BaseUnitTest() {
     @Test
     fun getChampion_FailedResponse_ReturnsErrorResult() = runTest {
         // Given
-        coEvery { service.getChampion("Aatrox") } returns Response.error(400, emptyResponseBody())
+        coEvery { service.getChampion(AATROX) } returns Response.error(400, emptyResponseBody())
 
         // When
-        val result = dataSource.getChampion("Aatrox").first()
+        val result = dataSource.getChampion(AATROX).first()
 
         // Then
         assert(result is Result.Error)
@@ -57,10 +60,10 @@ class ChampionDetailsDataSourceImplTest: BaseUnitTest() {
     @Test
     fun getChampion_ExceptionThrown_ReturnsErrorResult() = runTest {
         // Given
-        coEvery { service.getChampion("Aatrox") } throws RuntimeException("Some exception")
+        coEvery { service.getChampion(AATROX) } throws RuntimeException("Some exception")
 
         // When
-        val result = dataSource.getChampion("Aatrox").first()
+        val result = dataSource.getChampion(AATROX).first()
 
         // Then
         assert(result is Result.Error)

@@ -2,6 +2,7 @@ package com.lloyds.data.repository.source
 
 import com.lloyds.data.BaseUnitTest
 import com.lloyds.data.api.ChampionService
+import com.lloyds.data.createChampionMap
 import com.lloyds.data.mapper.ChampionListApiToDomainMapper
 import com.lloyds.data.repository.ApiResponseHandler
 import com.lloyds.domain.shared.Result

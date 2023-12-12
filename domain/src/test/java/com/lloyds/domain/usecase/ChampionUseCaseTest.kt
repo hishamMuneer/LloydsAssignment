@@ -1,18 +1,20 @@
 package com.lloyds.domain.usecase
 
-import com.lloyds.domain.BaseUnitTest
+import com.lloyds.domain.createChampion
 import com.lloyds.domain.model.Champion
 import com.lloyds.domain.repository.ChampionsRepo
 import com.lloyds.domain.shared.Result
+import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class ChampionUseCaseTest: BaseUnitTest() {
+class ChampionUseCaseTest {
 
     private val championsRepo = mockk<ChampionsRepo>()
     private lateinit var championUseCase: ChampionUseCase
@@ -20,6 +22,11 @@ class ChampionUseCaseTest: BaseUnitTest() {
     @Before
     fun setUp() {
         championUseCase = ChampionUseCase(championsRepo)
+    }
+
+    @After
+    fun tearDown() {
+        clearAllMocks()
     }
 
     @Test
